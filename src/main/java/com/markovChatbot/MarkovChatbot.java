@@ -14,14 +14,17 @@ public class MarkovChatbot {
         System.out.println("Start dialog with Chatbot ! ");
         String userInput = sc.nextLine();
         StringBuilder stringBuilder = new StringBuilder();
-        while (null != userInput && !"".equals(userInput)) {
-            for (int i = 0; i < 6; i++) {
-                stringBuilder.append(markovGraphModel.getOneOfMostFrequentTokens(userInput));
-                stringBuilder.append(" ");
+        while (true) {
+            if (null != userInput && !"".equals(userInput)) {
+                for (int i = 0; i < 6; i++) {
+                    stringBuilder.append(markovGraphModel.getOneOfMostFrequentTokens(userInput));
+                    stringBuilder.append(" ");
+                }
+                System.out.println(stringBuilder.toString());
+                stringBuilder.setLength(0);
+                userInput = sc.nextLine();
             }
-            break;
         }
-        System.out.println(stringBuilder.toString());
 
     }
 
