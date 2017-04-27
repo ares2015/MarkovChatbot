@@ -1,5 +1,9 @@
 package com.markovChatbot;
 
+import com.markovChatbot.factory.MarkovGraphModelFactory;
+import com.markovChatbot.factory.MarkovGraphModelFactoryImpl;
+import com.markovChatbot.model.MarkovGraphModel;
+
 import java.util.Scanner;
 
 /**
@@ -9,7 +13,10 @@ public class MarkovChatbot {
 
     public static void main(String[] args) {
         MarkovGraphModelFactory markovGraphModelFactory = new MarkovGraphModelFactoryImpl();
-        MarkovGraphModel markovGraphModel = markovGraphModelFactory.create();
+
+        MarkovGraphModel bigramGraphModel = markovGraphModelFactory.create("c:\\Users\\Oliver\\Documents\\NlpTrainingData\\MarkovChatbot\\MarkovBigramChatbotModel.txt");
+        MarkovGraphModel trigramGraphModel = markovGraphModelFactory.create("c:\\Users\\Oliver\\Documents\\NlpTrainingData\\MarkovChatbot\\MarkovTrigramChatbotModel.txt");
+
         Scanner sc = new Scanner(System.in);
         System.out.println("Start dialog with Chatbot ! ");
         String userInput = sc.nextLine();
@@ -17,7 +24,7 @@ public class MarkovChatbot {
         while (true) {
             if (null != userInput && !"".equals(userInput)) {
                 for (int i = 0; i < 6; i++) {
-                    stringBuilder.append(markovGraphModel.getOneOfMostFrequentTokens(userInput));
+                    stringBuilder.append(bigramGraphModel.getOneOfMostFrequentTokens(userInput));
                     stringBuilder.append(" ");
                 }
                 System.out.println(stringBuilder.toString());

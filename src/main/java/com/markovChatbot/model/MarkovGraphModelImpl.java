@@ -1,4 +1,4 @@
-package com.markovChatbot;
+package com.markovChatbot.model;
 
 import java.util.List;
 import java.util.Map;

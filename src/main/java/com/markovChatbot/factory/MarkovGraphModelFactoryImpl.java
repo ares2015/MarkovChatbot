@@ -1,4 +1,7 @@
-package com.markovChatbot;
+package com.markovChatbot.factory;
+
+import com.markovChatbot.model.MarkovGraphModel;
+import com.markovChatbot.model.MarkovGraphModelImpl;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -11,11 +14,11 @@ import java.util.*;
  */
 public class MarkovGraphModelFactoryImpl implements MarkovGraphModelFactory {
 
-    public MarkovGraphModel create() {
+    public MarkovGraphModel create(String path) {
         Map<String, TreeMap<Integer, List<String>>> graph = new HashMap<String, TreeMap<Integer, List<String>>>();
         BufferedReader br = null;
         try {
-            br = new BufferedReader(new FileReader("c:\\Users\\Oliver\\Documents\\NlpTrainingData\\MarkovChatbot\\MarkovChatbotModel.txt"));
+            br = new BufferedReader(new FileReader(path));
         } catch (final FileNotFoundException e) {
             e.printStackTrace();
         }

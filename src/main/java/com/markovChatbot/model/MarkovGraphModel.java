@@ -1,4 +1,4 @@
-package com.markovChatbot;
+package com.markovChatbot.model;
 
 /**
  * Created by Oliver on 4/25/2017.
