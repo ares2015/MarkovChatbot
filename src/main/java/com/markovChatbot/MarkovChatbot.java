@@ -14,8 +14,12 @@ public class MarkovChatbot {
     public static void main(String[] args) {
         MarkovGraphModelFactory markovGraphModelFactory = new MarkovGraphModelFactoryImpl();
 
-        MarkovGraphModel bigramGraphModel = markovGraphModelFactory.create("c:\\Users\\Oliver\\Documents\\NlpTrainingData\\MarkovChatbot\\MarkovBigramChatbotModel.txt");
-        MarkovGraphModel trigramGraphModel = markovGraphModelFactory.create("c:\\Users\\Oliver\\Documents\\NlpTrainingData\\MarkovChatbot\\MarkovTrigramChatbotModel.txt");
+        MarkovGraphModel forwardBigramGraphModel = markovGraphModelFactory.create("c:\\Users\\Oliver\\Documents\\NlpTrainingData\\MarkovChatbot\\MarkovForwardBigramChatbotModel.txt");
+        MarkovGraphModel backwardBigramGraphModel = markovGraphModelFactory.create("c:\\Users\\Oliver\\Documents\\NlpTrainingData\\MarkovChatbot\\MarkovBackwardBigramChatbotModel.txt");
+
+        MarkovGraphModel forwardTrigramGraphModel = markovGraphModelFactory.create("c:\\Users\\Oliver\\Documents\\NlpTrainingData\\MarkovChatbot\\MarkovForwardTrigramChatbotModel.txt");
+        MarkovGraphModel backwardTrigramGraphModel = markovGraphModelFactory.create("c:\\Users\\Oliver\\Documents\\NlpTrainingData\\MarkovChatbot\\MarkovBackwardTrigramChatbotModel.txt");
+
 
         Scanner sc = new Scanner(System.in);
         System.out.println("Start dialog with Chatbot ! ");
@@ -24,7 +28,7 @@ public class MarkovChatbot {
         while (true) {
             if (null != userInput && !"".equals(userInput)) {
                 for (int i = 0; i < 6; i++) {
-                    stringBuilder.append(bigramGraphModel.getOneOfMostFrequentTokens(userInput));
+                    stringBuilder.append(forwardBigramGraphModel.getOneOfMostFrequentTokens(userInput));
                     stringBuilder.append(" ");
                 }
                 System.out.println(stringBuilder.toString());
